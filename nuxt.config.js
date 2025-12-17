@@ -5,7 +5,7 @@ export default defineNuxtConfig({
       [
         '@storyblok/nuxt',
         {
-          accessToken:  process.env.STORYBLOK_ACCESS_TOKEN,
+          accessToken:  process.env.STORYBLOK_TOKEN,
           apiOptions: {
             region: '' // Set 'US" if your space is created in US region (EU default)
           }
@@ -14,5 +14,9 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     gnewsApiKey: process.env.GNEWS_API_KEY,
+    public: {
+      storyblokToken: process.env.STORYBLOK_TOKEN,
+      storyblokVersion: process.env.STORYBLOK_VERSION || 'draft'
+    }
   },
 })
