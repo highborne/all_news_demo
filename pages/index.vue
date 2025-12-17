@@ -1,10 +1,21 @@
-<script setup>
-    import { useRoute } from 'nuxt/app';
-    const config = useRuntimeConfig()
+<script setup lang="ts">
+  const config = useRuntimeConfig()
+ 
+   import { useRoute } from 'nuxt/app';
 
     const { slug } = useRoute().params;
     const story = await useAsyncStoryblok(slug && slug.length ? slug.join('/') : 'home', { version: config.public.storyblokVersion },
-    { customParent: 'https://app.storyblok.com' })
+    );
+
+  if (process.client && config.public.storyblokVersion === 'draft') {
+    watch(story, (value) => {
+      if (!value) return
+
+      useStoryblokBridge(value.id, (newStory) => {
+        story.value = newStory
+      })
+    })
+  }
 </script> 
 
 <template>
