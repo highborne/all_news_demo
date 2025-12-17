@@ -18,6 +18,7 @@ const { data: news } = await useFetch('/api/news', {
   <section class="space-y-6">
     <ClientOnly>
       <div class="space-y-4">
+        
         <NewsCard
             v-for="item in news"
             :key="item.url"
