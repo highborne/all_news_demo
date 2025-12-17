@@ -8,9 +8,10 @@
     );
 
   if (process.client && config.public.storyblokVersion === 'draft') {
+    console.log('Initializing Storyblok Bridge for live updates...')
     watch(story, (value) => {
       if (!value) return
-
+      
       useStoryblokBridge(value.id, (newStory) => {
         story.value = newStory
       })

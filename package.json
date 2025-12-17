@@ -16,5 +16,8 @@
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@storyblok/nuxt": "^6.0.4",
     "nuxt": "^3.10.2"
+  },
+  "dependencies": {
+    "@storyblok/preview-bridge": "^2.1.6"
   }
 }
