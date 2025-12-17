@@ -8,3 +8,5 @@ node_modules
 dist
 localhost-key.pem
 localhost.pem
+.vercel
+.env*.local
