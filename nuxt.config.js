@@ -1,23 +1,26 @@
+const isProd = process.env.VERCEL_ENV === 'production'
+
 export default defineNuxtConfig({
   css: ['@/assets/css/roboto.css'],
+
   modules: [
-      '@nuxtjs/tailwindcss',
-      [
-        '@storyblok/nuxt',
-        {
-          accessToken:  process.env.STORYBLOK_TOKEN,
-          bridge: true,
-          apiOptions: {
-            region: '' // Set 'US" if your space is created in US region (EU default)
-          }
-        }
-      ]
+    '@nuxtjs/tailwindcss',
+    '@storyblok/nuxt'
   ],
+
+  storyblok: {
+    accessToken: process.env.STORYBLOK_TOKEN,
+    bridge: !isProd,
+    apiOptions: {
+      region: ''
+    }
+  },
+
   runtimeConfig: {
     gnewsApiKey: process.env.GNEWS_API_KEY,
     public: {
       storyblokToken: process.env.STORYBLOK_TOKEN,
-      storyblokVersion: process.env.STORYBLOK_VERSION || 'draft'
+      storyblokVersion: isProd ? 'published' : 'draft'
     }
-  },
+  }
 })
