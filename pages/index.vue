@@ -1,21 +1,19 @@
 <script setup lang="ts">
   const config = useRuntimeConfig()
- 
   import { useRoute } from 'nuxt/app';
 
   const { slug } = useRoute().params;
+  const isPreview = config.public.storyblokVersion === 'draft';
+
   const story = await useAsyncStoryblok(slug && slug.length ? slug.join('/') : 'home', { version: config.public.storyblokVersion });
-
-
-  if (process.client && config.public.storyblokVersion === 'draft') {
-    watch(story, (value) => {
-      if (!value) return
-      
-      useStoryblokBridge(value.id, (newStory) => {
-        story.value = newStory
+  
+  onMounted(() => {
+    if (isPreview && story.value?.id) {
+      useStoryblokBridge(story.value.id, () => {
+        refresh()
       })
-    })
-  }
+    }
+  })
 </script> 
 
 <template>

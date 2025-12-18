@@ -1,5 +1,3 @@
-const isProd = process.env.VERCEL_ENV === 'production'
-
 export default defineNuxtConfig({
   css: ['@/assets/css/roboto.css'],
 
@@ -10,7 +8,7 @@ export default defineNuxtConfig({
 
   storyblok: {
     accessToken: process.env.STORYBLOK_TOKEN,
-    bridge: !isProd,
+    bridge: true,
     apiOptions: {
       region: ''
     }
@@ -20,7 +18,7 @@ export default defineNuxtConfig({
     gnewsApiKey: process.env.GNEWS_API_KEY,
     public: {
       storyblokToken: process.env.STORYBLOK_TOKEN,
-      storyblokVersion: isProd ? 'published' : 'draft'
+      storyblokVersion: process.env.STORYBLOK_VERSION,
     }
   }
 })
