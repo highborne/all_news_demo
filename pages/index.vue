@@ -7,6 +7,8 @@
     const story = await useAsyncStoryblok(slug && slug.length ? slug.join('/') : 'home', { version: config.public.storyblokVersion },
     );
 
+    console.log(config.public.storyblokVersion  + ' version loaded for story: ' + (slug && slug.length ? slug.join('/') : 'home'));
+
   if (process.client && config.public.storyblokVersion === 'draft') {
     console.log('Initializing Storyblok Bridge for live updates...')
     watch(story, (value) => {
