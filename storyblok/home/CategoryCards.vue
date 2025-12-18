@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { CategoryItem } from '../types/category';
+  import { CategoryItem } from '../../types/category';
 
   const props = defineProps<{
     category: CategoryItem

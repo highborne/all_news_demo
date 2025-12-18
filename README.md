@@ -75,14 +75,21 @@ App runs at **http://localhost:3000**
 
 ```txt
 pages/
-├── index.vue
-├── category/[...slug].vue
+├── category/
+    ├──[slug].vue
+    └──index.vue
+└──  index.vue
 
 storyblok/
-├── Page.vue
-├── CategoryPage.vue
-├── NewsList.vue
-├── NewsCard.vue
+    ├──category
+        ├── CategoryHeader.vue
+        ├── CategoryNewsCard.vue
+        └── CategoryNewsList.vue
+    ├──home
+        ├── CategoryCards.vue
+        ├── Hro.vue
+        └── HomeGrid.vue
+        
 ```
 
 ---

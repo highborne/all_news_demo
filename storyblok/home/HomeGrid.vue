@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CategoryCards from './CategoryCards.vue';
+import CategoryCards from '../home/CategoryCards.vue'
 
 const props = defineProps<{ blok: any }>()
 

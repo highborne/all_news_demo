@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { useFetch } from 'nuxt/app';
+  import { useFetch } from 'nuxt/app';
+import type { NewsItem } from '../../types/news';
 
 const props = defineProps({
   category: String,
 })
 
-const { data: news } = await useFetch('/api/news', {
+const { data: news } = await useFetch<NewsItem[]>('/api/news', {
   query: {
     category: props.category !== 'all'
       ? props.category
@@ -15,11 +16,10 @@ const { data: news } = await useFetch('/api/news', {
 </script>
 
 <template>
-  <section class="space-y-6">
+  <section class="flex flex-col w-full gap-6 items-center">
     <ClientOnly>
       <div class="space-y-4">
-        
-        <NewsCard
+        <CategoryNewsCard
             v-for="item in news"
             :key="item.url"
             :news="{
