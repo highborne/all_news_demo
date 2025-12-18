@@ -18,6 +18,8 @@
     "nuxt": "^3.10.2"
   },
   "dependencies": {
-    "@storyblok/preview-bridge": "^2.1.6"
+    "@storyblok/preview-bridge": "^2.1.6",
+    "axios": "^1.13.2",
+    "form-data": "^4.0.5"
   }
 }
