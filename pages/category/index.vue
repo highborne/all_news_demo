@@ -1,8 +1,12 @@
 <script setup>
-const story = await useAsyncStoryblok(
-  'category',
-  { version: 'draft' }
-)
+  import { useRoute, useRuntimeConfig } from 'nuxt/app';
+  
+  const config = useRuntimeConfig()
+  
+  const story = await useAsyncStoryblok(
+    'category',
+    { version: config.public.storyblokVersion }
+  )
 </script>
 
 <template>

@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script setup>
     import { computed } from 'vue';
-    import { useRoute } from 'nuxt/app';
+    import { useRoute, useRuntimeConfig } from 'nuxt/app';
     
     const config = useRuntimeConfig()
     const route = useRoute();
@@ -8,7 +8,7 @@
 
     const story = await useAsyncStoryblok(
         'category', 
-        { version:  config.public.storyblokVersion as 'draft' | 'published' }
+        { version:  config.public.storyblokVersion}
     )
 </script>
 
