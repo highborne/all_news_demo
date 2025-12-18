@@ -1,16 +1,13 @@
 <script setup lang="ts">
   const config = useRuntimeConfig()
  
-   import { useRoute } from 'nuxt/app';
+  import { useRoute } from 'nuxt/app';
 
-    const { slug } = useRoute().params;
-    const story = await useAsyncStoryblok(slug && slug.length ? slug.join('/') : 'home', { version: config.public.storyblokVersion },
-    );
+  const { slug } = useRoute().params;
+  const story = await useAsyncStoryblok(slug && slug.length ? slug.join('/') : 'home', { version: config.public.storyblokVersion });
 
-    console.log(config.public.storyblokVersion  + ' version loaded for story: ' + (slug && slug.length ? slug.join('/') : 'home'));
 
   if (process.client && config.public.storyblokVersion === 'draft') {
-    console.log('Initializing Storyblok Bridge for live updates...')
     watch(story, (value) => {
       if (!value) return
       
